@@ -131,7 +131,7 @@ $ python model_grid.py
 
 ### train_model.py
 This script is used for training the model over training data ( `dataset/data_final.csv` )
-
+Because of **Bootstrap Sampling** in random forest the results migght vary after every trainig process.
 ```sh
 $ python train_model.py
 ```
@@ -143,3 +143,6 @@ $ cd model
 $ python predict.py <list of video ids>
 ```
 for ex: ``` $ python predict.py [vid1,vid2,vid3] ```
+
+### Issues
+A very common [issue](http://scikit-learn.org/stable/modules/model_persistence.html#security-maintainability-limitations) comes with the pickling process which sometime leads to loss of information and different results every time. 

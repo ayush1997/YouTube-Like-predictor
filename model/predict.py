@@ -134,7 +134,8 @@ if __name__ == "__main__":
     # print get_json
     video_data(get_json)
     channel_data()
-    # list(set(V_id) - set(data["V_id"]))
+
+    print data
     print "Data processing in progress ........"
     df = pd.DataFrame(data)
     df = get_final_data(df)
@@ -159,7 +160,8 @@ if __name__ == "__main__":
     org = np.array(Y_test).astype("float32")
 
     err = ((pred-org)/org)*100.0
-
+    
+    V_id = data["V_id"]
 # This gives the difference between predicted and true like counts,(+) ->predicted more,(-) -> predicted less
     diff = pred - org
 
