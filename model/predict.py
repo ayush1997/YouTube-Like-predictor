@@ -134,7 +134,7 @@ if __name__ == "__main__":
     # print get_json
     video_data(get_json)
     channel_data()
-
+    # list(set(V_id) - set(data["V_id"]))
     print "Data processing in progress ........"
     df = pd.DataFrame(data)
     df = get_final_data(df)
