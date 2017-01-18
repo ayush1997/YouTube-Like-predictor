@@ -1,5 +1,11 @@
 ## YouTube Like Count Predictor
 
+This a tool for getting youtube video like count prediction.A Random Forest model was used for training on a large dataset of ~3,50,000 videos.Feature engineering,Data cleaning, Data selection and many other techniques were used for this task.
+
+## Report
+
+`Report.pdf` contains a detailed explanation of different steps and techniques that were used for this task.
+
 ## Tools Used
 
 * python 2.7
@@ -10,13 +16,13 @@
 
 ## How to run :
 
-1. *Clone this repo*
+1. **Clone this repo**
 
       ```sh
       $ git clone https://gitlab.com/ayush1997/PS17_Ayush_Singh.git
       $ cd PS17_Ayush_Singh
       ```
-2. *Create new virtual environment*
+2. **Create new virtual environment**
 
       ```sh
       $ sudo pip install virtualenv
@@ -24,37 +30,36 @@
       $ source venv/bin/activate
       $ pip install -r requirements.txt
        ```
-3. *Prediction*
+3. **Predictions**
 
-    There are two ways for get the result for predictions.
+    There are two ways for getting the prediction results.
 
-    3.1 *From pretrained model*
-
-    A pretrained model is uploaded on drive at
-
-     Unzip the `model-final` file in the same
-    ```sh
-    $ cd model
-    $ python predict.py <list of video ids>
-    ```
-    for ex: ``` $ python predict.py vid1 vid2 vid3] ```
-
-
-    3.2. *Training the model and run prediction*
+    3.1. *Training the model and run prediction*
 
     ```sh
     $ cd model
     $ python train_model.py
     ```
 
-    This will save a `model-final` file in the same folder,Trainig takes *~18 Mins*.Then run
+    This will save a `model-final` file in the same folder,Training takes **~18 Mins**.Then run
 
     ```sh
     $ python predict.py <list of video ids>
     ```
-    for ex: ``` $ python predict.py vid1 vid2 vid3 ```
+    for ex: ``` $ python predict.py dOyJqGtP-wU ASO_zypdnsQ wEduiMyl0ko```
 
+    3.2 **From pretrained model**
 
+    A pretrained model has been uploaded on dropbox.Download model(~500MB) from the (link)[https://www.dropbox.com/s/yv2jv55nz81fs5j/model-final.zip?dl=0].
+
+     Unzip the `model-final` file in the `model` folder.
+    ```sh
+    $ cd model
+    $ python predict.py <list of video ids>
+    ```
+    for ex: ``` $ python predict.py vid1 vid2 vid3] ```
+
+**Note:** List can contain a maximum of *40* Video IDs at the time of run.      
 
 
 ## Code Details
@@ -111,7 +116,8 @@ The notebook has the implementation for making new derived features.
 ### DataProcessing.ipynb
 This notebook contains data processing implementation for data cleaning and encoding processes.
 
-*Note* : The final *data* generated after all processing has been uploaded in `dataset/data.csv`. `dataset/data_final.csv` has the data which is used for training the model.
+
+**Note** : The final *data* generated after all processing has been uploaded in `dataset/data.csv`. `dataset/data_final.csv` has the data which is used for training the model.
 
 ## model/
 
