@@ -34,7 +34,7 @@ This a tool for getting youtube video like count prediction.A Random Forest mode
 
     There are two ways for getting the prediction results.
 
-    3.1. *Training the model and run prediction*
+    3.1. **Training the model and run prediction**
 
     ```sh
     $ cd model
@@ -50,7 +50,7 @@ This a tool for getting youtube video like count prediction.A Random Forest mode
 
     3.2 **From pretrained model**
 
-    A pretrained model has been uploaded on dropbox.Download model(~500MB) from the (link)[https://www.dropbox.com/s/yv2jv55nz81fs5j/model-final.zip?dl=0].
+    A pretrained model has been uploaded on dropbox.Download model(~500MB) from the [link](https://www.dropbox.com/s/yv2jv55nz81fs5j/model-final.zip?dl=0).
 
      Unzip the `model-final` file in the `model` folder.
     ```sh
@@ -59,7 +59,7 @@ This a tool for getting youtube video like count prediction.A Random Forest mode
     ```
     for ex: ``` $ python predict.py vid1 vid2 vid3] ```
 
-**Note:** List can contain a maximum of *40* Video IDs at the time of run.      
+**Note:** List can contain a maximum of **40** Video IDs at the time of run.      
 
 
 ## Code Details
@@ -68,7 +68,7 @@ Below is a brief description for the Code files/folder in repo.
 
 ## data/
 
-This folder contains scripts which were used to fetch data using *Youtube API* and populatin the base.
+This folder contains scripts which were used to fetch data using **Youtube API** and populatin the base.
 
 ```sh
 $ cd data
@@ -76,7 +76,7 @@ $ cd data
 
 ### get_IDS.py
 
-The script uses Youtube Search API for extracting *Video IDs* for the last *7 years(2010-2016)*.It gives Approx. *22,000-24,000* Video IDs for every category and stores them in a Pickle files for different categories.
+The script uses Youtube Search API for extracting **Video IDs** for the last **7 years(2010-2016)**.It gives Approx. **22,000-24,000** Video IDs for every category and stores them in a Pickle files for different categories.
 
 ```sh
 $ python predict.py <list of video ids>
@@ -101,7 +101,7 @@ The script is used to scrape social links
 ```sh
 $ python scrape_social.py
 ```
-*Note* : Due to large amount of data to be extracted for different attributes,the extraction was done at different levels therefore it was not viable to make a single script for data collection which could make debugging a little messy.
+**Note** : Due to large amount of data to be extracted for different attributes,the extraction was done at different levels therefore it was not viable to make a single script for data collection which could make debugging a little messy.
 
 ## notebook/
 This folder contains ipython notebooks which contain implementation for merging different data extracted and tasks like Data cleaning and processing.
@@ -123,7 +123,7 @@ This notebook contains data processing implementation for data cleaning and enco
 
 This folders contains scripts used for training,tuning model and getting the prediction results.
 ### model_grid.py
-This script generates the tuned parameters for estimator using *Grid Search* and *Cross Validation*.
+This script generates the tuned parameters for estimator using **Grid Search** and **Cross Validation**.
 
 ```sh
 $ python model_grid.py
@@ -137,7 +137,7 @@ $ python train_model.py
 ```
 
 ### predict.py
-This script returns the *Like count* prediction along with the *difference* and the *Error rate*
+This script returns the **Like count** prediction along with the **difference** and the **Error rate**
 ```sh
 $ cd model
 $ python predict.py <list of video ids>
