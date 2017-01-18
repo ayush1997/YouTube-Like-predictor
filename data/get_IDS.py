@@ -11,7 +11,6 @@ API_KEYS = ["AIzaSyAgzszK84rYUM0ErWSdtiV-tyNGqGB3xFg","AIzaSyA3uNDJDl6WH0z8t9uB9
 category_dict  = {29:"Non-profits & Activism",28:"Science & Technology",27:"Education",26:"Howtostyle",25:"New&politics",24:"Entertainment",23:"Comedy",22:"People&blogs",20:"Gaming",19:"Travel&events",17:"Sports",15:"Pets&Animals",10:"Music",2:"Cars&vehicles",1:"Film&Animation"}
 
 
-# category_id = 29
 video_id=[]
 video_dict = {}
 

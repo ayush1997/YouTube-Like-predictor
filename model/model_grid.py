@@ -13,7 +13,7 @@ columns = ['categoryId', 'channel_subscriberCount', 'definition', 'likeCount', '
 continous_name = ['viewCount', 'commentCount','dislikeCount','viewCount/video_month_old','subscriberCount/videoCount']
 
 
-df = pd.read_csv("notebook/data_final.csv")
+df = pd.read_csv("dataset/data_final.csv")
 df = df.sample(frac=1).reset_index(drop=True)
 
 Y = df.likeCount

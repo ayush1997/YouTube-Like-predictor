@@ -1,12 +1,11 @@
-# requests==2.11.1
 import pandas as pd
 import numpy as np
 import pickle
 import requests
 import random
 import time
-
-
+import math
+import sys
 # V_id = ["_beJmXpQPlM","_ibTYAxssQw","LlhgR0Y58ZI","zsgdzuooLUw","-HXZjkPgry8","H7Uyfqi_TE8",'QAwiyS5aTcU',"UeyP_tELq6E","E9AAlpH3ziM","JukZGqYx0gs","pWjfA4hBNe8","_4VgLfqzPxw","h7yZjSiype4","PzQlPmYoCVI","xsbkZMmO6vk","GAPqEAWW9lc","FaPtbs8VfCg"]
 
 # V_id = ["GAgDjpawyzA","yFEILxZA6hY","K79WsDdFPTo","wWfF7KAnM58","SkZg1ZflpJs","XUKlg0XSG10","PgCBVGBHGx4","DglciBwGIHk","rYdFY35hVMA","Pr65zyDHXlc","6yEK7JRsXZk","V0Yb81yuprI","xSxgCguPEaM"]
@@ -16,8 +15,8 @@ import time
 
 
 # V_id= ["JOY8btlE0yU","hh2DcM1IKrU","RHri4V4duAk","wEduiMyl0ko","07Pm8ZY0XJI"]
-V_id= ["vV4OIYKzsBk","Hd_ptbiPoXM","X4uUSxm8too","L8N0Xl6Taeg","ZlfIVEy_YOA"]
-V_id= ['iS1g8G_njx8','O-zpOMYRi0w','oC-GflRB0y4','hXI8RQYC36Q','LjhCEhWiKXk','-CmadmM5cOk','kYtGl1dX5qI','kkx-7fsiWgg','rYEDA3JcQqw','nlcIKh6sBtc','j5-yKhDd64s','3AtDnEC4zak','JF8BRvqGCNs','nfWlot6h_JM','Pw-0pbY9JeU','pB-5XG-DbAA','Pgmx7z49OEk','AbPED9bisSc','aKuivabiOns','foE1mO2yM04','b8m9zhNAgKs','e-ORhEE9VVg','YJVmu6yttiw','OPf0YbXqDm0','UpsKGvPjAgw','rtOvBOTyX00','cmSbXsFE3l8','NUsoVlDFqZg','Io0fBr1XBUA','R4em3LKQCAQ','pXRviuL6vMY','k0BWlvnBmIE','AByfaYcOm4A','kdemFfbS5H0','Ho32Oh6b4jc','1TsVjvEkc4s','5GL9JoH4Sws','YQHsXMglC9A','bpOSxM0rNPM','DK_0jXPuIr0']
+# V_id= ["vV4OIYKzsBk","Hd_ptbiPoXM","X4uUSxm8too","L8N0Xl6Taeg","ZlfIVEy_YOA","R4em3LKQCAQ","hXI8RQYC36Q"]
+# V_id= ['iS1g8G_njx8','O-zpOMYRi0w','oC-GflRB0y4','hXI8RQYC36Q','LjhCEhWiKXk','-CmadmM5cOk','kYtGl1dX5qI','kkx-7fsiWgg','rYEDA3JcQqw','nlcIKh6sBtc','j5-yKhDd64s','3AtDnEC4zak','JF8BRvqGCNs','nfWlot6h_JM','Pw-0pbY9JeU','pB-5XG-DbAA','Pgmx7z49OEk','AbPED9bisSc','aKuivabiOns','foE1mO2yM04','b8m9zhNAgKs','e-ORhEE9VVg','YJVmu6yttiw','OPf0YbXqDm0','UpsKGvPjAgw','rtOvBOTyX00','cmSbXsFE3l8','NUsoVlDFqZg','Io0fBr1XBUA','R4em3LKQCAQ','pXRviuL6vMY','k0BWlvnBmIE','AByfaYcOm4A','kdemFfbS5H0','Ho32Oh6b4jc','1TsVjvEkc4s','5GL9JoH4Sws','YQHsXMglC9A','bpOSxM0rNPM','DK_0jXPuIr0']
 
 # >1,00,0000 <2000000
 # V_id = ['aHjpOzsQ9YI','VT1-sitWRtY','ANS9sSJA9Yc','K_9tX4eHztY','cNw8A5pwbVI','BiQIc7fG9pA','FlsBObg-1BQ','AwAMEZsQBGI','X2BYmmTI04I','r_8ydghbGSg','Pzz4Z-O7710','6ACl8s_tBzE','0zGcUoRlhmw','nPvuNsRccVw','a7UFm6ErMPU','AgFeZr5ptV8','cHHLHGNpCSA','PVzljDmoPVs','_ovdm2yX4MA','1zfzka5VwRc','_wL3Pc-EmjA','XgJFqVvb2Ws','VA770wpLX-Q','3JWTaaS7LdU','1y6smkh6c-0','mk48xRzuNvA','o_1aF54DO60','syFZfO_wfMQ','lxw3C5HJ2XU','5y_KJAg8bHI','_kxz7WX4mLU','oiKj0Z_Xnjc','qDcFryDXQ7U','HcVv9R1ZR84','OXq-JP8w5H4','3x2ABSAMVno','jK2aIUmmdP4','LPgvNlrBfb0','uo35R9zQsAI','yUV9JwiQLog','cedoBlUvBlI','cPJUBQd-PNM','LUjn3RpkcKY','UKp2CrfmVfw','oh2LWWORoiM','B3eAMGXFw1o','V1bFr2SWP1I','-2U0Ivkn2Ds','WSeNSzJ2-Jw','Kuz3DUNZaC8']
@@ -28,7 +27,7 @@ V_id= ['iS1g8G_njx8','O-zpOMYRi0w','oC-GflRB0y4','hXI8RQYC36Q','LjhCEhWiKXk','-C
 # # V_id = ["dOyJqGtP-wU","qDrShJ_ItNk","SSZg1Wy7H0k"]
 #
 # # >30000 <50000
-V_id = ['LoebZZ8K5N0','yFEILxZA6hY','FGmeA6CSIBY','k0ebrwegDr0','Edh_8LMpReY','1hyr7ZKkQbQ','EZG1K1-2omo','OFjHbN_WuVk','DoLAoOkG5gY','cweoXMacRv4','TI455Z37o30','R1IoZyhgrYw','xMk8wuw7nek','704EXbJ-b5k','2Qv0pD-Nfag','p6lNUQ3tFmA','Vzn4MJdaabw','UpwAXpA680Q','6QvEpCXzcBI','W4Fl6SUvy2A','us6u7PAdluE','cj0DxafLoz0','QbCCjhqjYc4','ipKbMMD8OEo','VeRvC4ebDyI','EAzGXqJSDJ8','H3N0ObC9klg','-ZwGeYu2pOQ','_bP0Uf3Shd0','NgWCG3f77Jk','TdQp85nN4to','ZeqsIQzs8sw','EuCh53ZG1D0','8WKgNyvsNDM','Q10cs2QJgeo','GZ-k3oblIM8','6gqk-yIDYwk','xdOykEJSXIg','qTfGxrAMQDA','tyKh4cI62CI','poL7l-Uk3I8','MRArCpmy4Hc','6iZN_5j3KUA','xNaA9wUo6GE','D9Clrc-XNiw','cwVhwavP7gs','onEfmC6HRF4','KwW9slmrKXo','BJemArTv7EI','oWTgvRGwzWg']
+# V_id = ['LoebZZ8K5N0','yFEILxZA6hY','FGmeA6CSIBY','k0ebrwegDr0','Edh_8LMpReY','1hyr7ZKkQbQ','EZG1K1-2omo','OFjHbN_WuVk','DoLAoOkG5gY','cweoXMacRv4','TI455Z37o30','R1IoZyhgrYw','xMk8wuw7nek','704EXbJ-b5k','2Qv0pD-Nfag','p6lNUQ3tFmA','Vzn4MJdaabw','UpwAXpA680Q','6QvEpCXzcBI','W4Fl6SUvy2A','us6u7PAdluE','cj0DxafLoz0','QbCCjhqjYc4','ipKbMMD8OEo','VeRvC4ebDyI','EAzGXqJSDJ8','H3N0ObC9klg','-ZwGeYu2pOQ','_bP0Uf3Shd0','NgWCG3f77Jk','TdQp85nN4to','ZeqsIQzs8sw','EuCh53ZG1D0','8WKgNyvsNDM','Q10cs2QJgeo','GZ-k3oblIM8','6gqk-yIDYwk','xdOykEJSXIg','qTfGxrAMQDA','tyKh4cI62CI','poL7l-Uk3I8','MRArCpmy4Hc','6iZN_5j3KUA','xNaA9wUo6GE','D9Clrc-XNiw','cwVhwavP7gs','onEfmC6HRF4','KwW9slmrKXo','BJemArTv7EI','oWTgvRGwzWg']
 #
 # >2000000
 # # V_id = ['b8m9zhNAgKs','e-ORhEE9VVg','YJVmu6yttiw','OPf0YbXqDm0','UpsKGvPjAgw','rtOvBOTyX00','cmSbXsFE3l8','NUsoVlDFqZg','Io0fBr1XBUA','R4em3LKQCAQ','pXRviuL6vMY','k0BWlvnBmIE','AByfaYcOm4A','kdemFfbS5H0','Ho32Oh6b4jc','1TsVjvEkc4s','5GL9JoH4Sws','YQHsXMglC9A','bpOSxM0rNPM','DK_0jXPuIr0','gCYcHz2k5x0','AJtDXIazrMo','C_3d6GntKbk','nYh-n7EOtMA','QGJuMBdaqIw','IdneKLhsWOQ','mWRsgZuwf_8','IcrbM1l_BoI','OpQFFLBMEPI','CGyEd0aKWZE','34Na4j8AVgA','L8eRzOYhLuw','fLexgOxsZu0','ij_0p_6qTss','SXiSVQZLje8','HMUDVMiITOU','jGflUbPQfW8','i_kF4zLNKio','wzMrK-aGCug','o3mP3mJDL2k','-59jGD4WrmE','1ekZEVeXwek','ebXbLfLACGM','fWNaR-rxAic','hHUbLv4ThOo','fk4BbF7B29w','hiP14ED28CA','VbfpW0pbvaU','g5qU7p7yOY8','bbEoRnaOIbs']
@@ -43,6 +42,11 @@ V_id = ['LoebZZ8K5N0','yFEILxZA6hY','FGmeA6CSIBY','k0ebrwegDr0','Edh_8LMpReY','1
 #sentdex
 # V_id = ["JeamFbHhmDo","WYYxafb1A6E","HHUqhVzctQE","Y-CT_l1dnVU"]
 
+
+arg = sys.argv
+V_id = arg[1:]
+print "Video IDs",V_id
+
 API_KEYS = ["AIzaSyAgzszK84rYUM0ErWSdtiV-tyNGqGB3xFg","AIzaSyA3uNDJDl6WH0z8t9uB9pdmbIBpf54PVIE","AIzaSyCcLbOx4L6iTcS4NnvviLa1TfE7I1mnccU","AIzaSyAOpWL4ijH4vjO6sOF5ORIzohy_o2shL9s","AIzaSyCp8TYUqMn5LMgeHDvBcNcd2Y3pGbgVTAg"]
 
 data={"V_id":[],"channelId":[],"publishedAt":[],"commentCount":[],"dislikeCount":[],"likeCount":[],"viewCount":[],"publishedAt":[],"categoryId":[],"ChannelPublishedAt":[],"channel_videoCount":[],"channel_subscriberCount":[],"channel_ViewCount":[]}
@@ -51,6 +55,7 @@ channel_dict = {}
 columns = ['categoryId', 'channel_subscriberCount', 'definition', 'likeCount', 'dislikeCount', 'viewCount', 'commentCount', 'viewCount/channel_month_old', 'viewCount/video_month_old', 'viewCount/http_in_descp', 'viewCount/NoOfTags', 'viewCount/tags_in_desc', 'subscriberCount/videoCount', 'channelViewCount/channeVideoCount', 'channelViewCount/socialLink']
 # ['dislikeCount', 'viewCount', 'commentCount','viewCount/video_month_old','subscriberCount/videoCount','channel_subscriberCount','subscriberCount/videoCount','viewCount/channel_month_old']
 
+# The function returns the final URL for request
 def get_url(Video_urls):
     v_id =  ",".join(Video_urls)
     k = random.randint(0,4)
@@ -58,13 +63,15 @@ def get_url(Video_urls):
     url = "https://www.googleapis.com/youtube/v3/videos?part=status,snippet,topicDetails,contentDetails,statistics&id="+v_id+"&key="+API_KEY
     return url
 
+# This function populates the data dictionary
 def add_data(i,key1,key2,key3="NA"):
     if key3!="NA":
         try:
             data[key1].append(i[key2][key3])
         except Exception,err:
-            print i["id"]
-            print "error",err
+            if key1 in ['viewCount', 'commentCount','dislikeCount','publishedAt','channel_videoCount','channel_subscriberCount']:
+                print i["id"]
+                print key1+"missing"
             data[key1].append(0)
     else:
         try:
@@ -72,6 +79,7 @@ def add_data(i,key1,key2,key3="NA"):
         except:
             data[key1].append(None)
 
+# The function is used to get the Video relevant data
 def video_data(get_json):
     for i in get_json["items"]:
 
@@ -95,6 +103,8 @@ def video_data(get_json):
 
         add_data(i,key1="channelId",key2="snippet",key3="channelId")
 
+# It gets the channel relevant data
+
 def channel_data():
 
     channel_id = ",".join(data["channelId"])
@@ -108,13 +118,9 @@ def channel_data():
 
     if len(set(data["channelId"])) == len(data["channelId"]):
         for i in get_json["items"]:
-            # channel_dict[i["id"]]={}
-            # add_data(i,key1="channelTitle",key2="snippet",key3="title")
-            # add_data(i,key1="ChannelDescription",key2="snippet",key3="description")
             add_data(i,key1="ChannelPublishedAt",key2="snippet",key3="publishedAt")
 
             add_data(i,key1="channel_ViewCount",key2="statistics",key3="viewCount")
-            # add_data(i,key1="channel_commentCount",key2="statistics",key3="commentCount")
             add_data(i,key1="channel_subscriberCount",key2="statistics",key3="subscriberCount")
             add_data(i,key1="channel_videoCount",key2="statistics",key3="videoCount")
     else:
@@ -139,6 +145,7 @@ def channel_data():
 def get_months(x):
     return 12-x.month + 1 + (2016 - (x.year+1)+1)*12
 
+# The function gets the data after coverting to derived features
 def get_final_data(df):
 
     df["months_old"] = pd.to_datetime(df.publishedAt).apply(lambda x: get_months(x))
@@ -157,45 +164,50 @@ if __name__ == "__main__":
 
     url = get_url(V_id)
     # print url
+    print "Collecting data ......."
     r = requests.get(url)
     get_json = r.json()
+    # print get_json
     video_data(get_json)
     channel_data()
-    # print data
+
+    print "Data processing in progress ........"
     df = pd.DataFrame(data)
     df = get_final_data(df)
 
-    continous_name = ['viewCount', 'commentCount','dislikeCount','viewCount/video_month_old','subscriberCount/videoCount']
-    X_test = df[continous_name]
-    filename = "model-2"
+    features = ['viewCount', 'commentCount','dislikeCount','viewCount/video_month_old','subscriberCount/videoCount']
+
+    X_test = df[features]
+    Y_test = df["likeCount"]
+
+    print "Fetching Model ........"
+    filename = "model-final"
     fileObject = open(filename,'r')
-    model_params = pickle.load(fileObject)
-    clf = model_params
-    # clf = model_params["clf"]
-    # X_scaler = model_params["X_scaler"]
-    # Y_scaler = model_params["Y_scaler"]
+    model = pickle.load(fileObject)
+    clf = model
+
 
     np.set_printoptions(suppress=True)
-    Y_test = df["likeCount"]
-    # print "Original: ", list(Y_test)
 
-    # X_test = X_scaler.transform(X_test)
-    # Y_test = Y_scaler.transform(Y_test)
 
-    pred  = clf.predict(X_test)
-    # pred = Y_scaler.inverse_transform(pred)
-    # org = Y_scaler.inverse_transform(Y_test)
+    pred  = np.ceil(clf.predict(X_test))
+
     org = np.array(Y_test).astype("float32")
 
-    # print "pred",pred
-    # print "org",org
-    print "org,pred"
-    print zip(org, pred,((pred-org)/org)*100.0)
-    # print pred-org
+    err = ((pred-org)/org)*100.0
 
-    # print "error",((pred-org)/org)*100.0
+# This gives the difference between predicted and true like counts,(+) ->predicted more,(-) -> predicted less
+    diff = pred - org
 
-    print  clf.score(X_test,Y_test)
 
-    # print clf.predict(X_test)
-    # print clf.score(X_test,Y_test)
+    # print len(V_id),len(org),len(pred)
+    try:
+        out = pd.DataFrame({"V_ids":V_id,"Original":org,"Predicted":pred,"Difference(+/-)":diff,"Error Rate":err})
+        print out[['V_ids','Original','Predicted',"Difference(+/-)","Error Rate"]]
+    except:
+        print "Video ID"+"              "+"Original"+"              "+"Predicted"+"             "+"Error"
+        for i in zip(V_id,org, pred,((pred-org)/org)*100.0):
+            print i[0]+"                "+str(i[1])+"               "+str(i[2])+"                "+str(i[3])
+
+
+    print  "R^2 Score : ",clf.score(X_test,Y_test)
