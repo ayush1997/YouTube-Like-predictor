@@ -146,3 +146,12 @@ for ex: ``` $ python predict.py [vid1,vid2,vid3] ```
 
 ### Issues
 A very common [issue](http://scikit-learn.org/stable/modules/model_persistence.html#security-maintainability-limitations) comes with the pickling process which sometime leads to loss of information and different results every time. 
+
+##
+![1](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/1.png)
+![2](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/2.png)
+![3](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/3.png)
+![4](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/4.png)
+![5](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/5.png)
+![6](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/6.png)
+![7](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/7.png)
