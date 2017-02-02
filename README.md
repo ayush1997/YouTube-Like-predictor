@@ -156,3 +156,4 @@ A very common [issue](http://scikit-learn.org/stable/modules/model_persistence.h
 ![5](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/5.png)
 ![6](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/6.png)
 ![7](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/7.png)
+![8](https://github.com/ayush1997/YouTube-Like-predictor/blob/master/images/8.png)
