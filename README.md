@@ -19,7 +19,7 @@ This a tool for getting youtube video like count prediction.A Random Forest mode
 1. **Clone this repo**
 
       ```sh
-      $ git clone https://gitlab.com/ayush1997/PS17_Ayush_Singh.git
+      $ git clone https://github.com/ayush1997/YouTube-Like-predictor.git
       $ cd PS17_Ayush_Singh
       ```
 2. **Create new virtual environment**
