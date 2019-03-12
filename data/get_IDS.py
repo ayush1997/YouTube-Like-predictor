@@ -5,7 +5,8 @@ import random
 
 # We are extracting around 5000 video of every year(2010-2017) and storing them in pickle file.
 
-API_KEYS = ["AIzaSyAgzszK84rYUM0ErWSdtiV-tyNGqGB3xFg","AIzaSyA3uNDJDl6WH0z8t9uB9pdmbIBpf54PVIE","AIzaSyCcLbOx4L6iTcS4NnvviLa1TfE7I1mnccU","AIzaSyAOpWL4ijH4vjO6sOF5ORIzohy_o2shL9s","AIzaSyCp8TYUqMn5LMgeHDvBcNcd2Y3pGbgVTAg"]
+#Put API keys
+API_KEYS = []
 
 
 category_dict  = {29:"Non-profits & Activism",28:"Science & Technology",27:"Education",26:"Howtostyle",25:"New&politics",24:"Entertainment",23:"Comedy",22:"People&blogs",20:"Gaming",19:"Travel&events",17:"Sports",15:"Pets&Animals",10:"Music",2:"Cars&vehicles",1:"Film&Animation"}
